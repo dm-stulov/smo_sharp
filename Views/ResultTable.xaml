@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SMO.Views.ResultTable">
+
+    <StackPanel>
+        <Grid RowDefinitions="1*, 9*" Margin="10">
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24">Информация об источниках</TextBlock>
+            <DataGrid Grid.Row="1" Items="{Binding SourceTable}" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID"
+                                        Binding="{Binding SourceId}"
+                                        Width="2*" />
+
+                    <DataGridTextColumn Header="Сгенерированно заявок"
+                                        Binding="{Binding GeneratedAmount}"
+                                        Width="2*" />
+
+                    <DataGridTextColumn Header="Отклонено заявок"
+                                        Binding="{Binding RejectedAmount}"
+                                        Width="2*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid RowDefinitions="1*, 9*" Margin="10">
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24">Информация о приборах</TextBlock>
+            <DataGrid Grid.Row="1" Items="{Binding HandlerTable}" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID"
+                                        Binding="{Binding HandlerId}"
+                                        Width="2*" />
+
+                    <DataGridTextColumn Header="Количество обслуженных заявок"
+                                        Binding="{Binding HandledAmount}"
+                                        Width="2*" />
+
+                    <DataGridTextColumn Header="Среднее время обслуживания"
+                                        Binding="{Binding Time}"
+                                        Width="2*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </StackPanel>
+</UserControl>

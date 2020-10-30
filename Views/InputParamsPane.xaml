@@ -1,0 +1,83 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SMO.Views.InputParamsPane">
+    <UserControl.Styles>
+        <Style Selector="TextBlock.title">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </UserControl.Styles>
+
+    <Border BorderBrush="#ebebeb"
+            BorderThickness="1"
+            Padding="10"
+            MaxHeight="300"
+            VerticalAlignment="Top">
+
+        <Grid RowDefinitions="1*, 9*" ColumnDefinitions="1*">
+            <TextBlock Grid.Row="0" Text="Входные параметры" Classes="title" HorizontalAlignment="Center" Margin="5" />
+            <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="5*, 5*" Margin="60 20 0 20">
+                <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="Auto, Auto" ColumnDefinitions="8*, 2*">
+                    <TextBlock Text="Количество заявок" Grid.Row="0" Grid.Column="0" />
+                    <Slider Minimum="1" Maximum="10000" Value="{Binding RequestAmount }" Grid.Row="1" Grid.Column="0" />
+                    <TextBlock Text="{Binding RequestAmount}" Grid.Row="1" Grid.Column="1" />
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="Auto, Auto" ColumnDefinitions="8*, 2*">
+                    <TextBlock Text="Количество источников" Grid.Row="0" Grid.Column="0" />
+                    <Slider Minimum="1" Maximum="10" Value="{Binding SourceAmount }" Grid.Row="1" Grid.Column="0" />
+                    <TextBlock Text="{Binding SourceAmount}" Grid.Row="1" Grid.Column="1" />
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="0" RowDefinitions="Auto, Auto" ColumnDefinitions="8*, 2*">
+                    <TextBlock Text="Количество приборов" Grid.Row="0" Grid.Column="0" />
+                    <Slider Minimum="1" Maximum="10" Value="{Binding HandlerAmount }" Grid.Row="1" Grid.Column="0" />
+                    <TextBlock Text="{Binding HandlerAmount}" Grid.Row="1" Grid.Column="1" />
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="1" RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="8*, 2*" Margin="5">
+                    <TextBlock Text="Интенсивность источников" Grid.Row="0" Grid.Column="0" />
+
+                    <NumericUpDown
+                        Grid.Row="1" Grid.Column="0"
+                        Value="{Binding SourceMinArg }" Increment="1" Minimum="1"
+                        Maximum="{Binding SourceMaxArg }" 
+                        Margin="1"/>
+
+                    <NumericUpDown
+                        Grid.Row="2" Grid.Column="0"
+                        Value="{Binding SourceMaxArg }"
+                        Increment="1" Minimum="{Binding SourceMinArg }"
+                        Maximum="10000"
+                        Margin="1"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="8*, 2*" Margin="5">
+                    <TextBlock Text="Интенсивность приборов" Grid.Row="0" Grid.Column="0" />
+
+                    <NumericUpDown
+                        Grid.Row="1" Grid.Column="0"
+                        Value="{Binding HandlerMinArg }" Increment="1" Minimum="1"
+                        Maximum="{Binding HandlerMaxArg }" 
+                        Margin="1"/>
+
+                    <NumericUpDown
+                        Grid.Row="2" Grid.Column="0"
+                        Value="{Binding HandlerMaxArg }"
+                        Increment="1" Minimum="{Binding HandlerMinArg }"
+                        Maximum="10000" 
+                        Margin="1"/>
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="1" RowDefinitions="Auto, Auto" ColumnDefinitions="8*, 2*" Margin="5">
+                    <TextBlock Text="Размер буфера" Grid.Row="0" Grid.Column="0" />
+                    <Slider Minimum="1" Maximum="10" Value="{Binding BufferSize }" Grid.Row="1" Grid.Column="0" />
+                    <TextBlock Text="{Binding BufferSize}" Grid.Row="1" Grid.Column="1" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>
